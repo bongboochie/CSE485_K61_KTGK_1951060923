@@ -1,8 +1,7 @@
-<?php
-include('header.php');
-?>
+<?php 
+    include('config/config.php');
 
-$id = $_GET['id'];
+    $id = $_GET['id'];
     $sql = "DELETE FROM blood_recipient WHERE reci_id=$id";
 
     $res = mysqli_query($conn, $sql);
@@ -18,4 +17,9 @@ $id = $_GET['id'];
         $_SESSION['delete'] = "<div class='text-danger'>Lỗi khi xóa.</div>";
         header('location:'.SITEURL.'error.php');
     }
+?>
+
+
+<?php
+include('footer.php');
 ?>

@@ -49,7 +49,7 @@ include('header.php');
                         <td><?php echo $date ?></td>
                         <td><?php echo $phno ?></td>
                         <td><a href="delete.php"><i class="fas fa-trash-alt"></i></a></td>
-                        <td><a href="<?php echo $row['']?>"><i class="fas fa-user-edit"></i></a></td>
+                        <td><a href="edit.php"><i class="fas fa-user-edit"></i></a></td>
                         
                     </tr>
                     <?php

@@ -3,7 +3,8 @@ include('header.php');
 ?>
 
 <div class="m-auto" style="width:40%;">
-    <form>
+    <form method="POST">
+
     <div class="mb-3">
         <label for="inputname" class="form-label">Tên người nhận máu</label>
         <input type="text" class="form-control" name="name" id="inputname">
@@ -22,7 +23,7 @@ include('header.php');
     </div>
     <div class="mb-3">
         <label for="inputbqnty" class="form-label">Ngày đăng kí nhận máu</label>
-        <input type="text" class="form-control" name="bqnty" id="inputbqnty">
+        <input type="date" class="form-control" name="bqnty" id="inputbqnty">
     </div>
     <div class="mb-3">
         <label for="inputsex" class="form-label">Giới tính</label>
@@ -33,7 +34,7 @@ include('header.php');
     </div>
     <div class="mb-3">
         <label for="inputphno" class="form-label">Số điện thoại</label>
-        <input type="text" class="form-control" id="inputphno">
+        <input type="text" class="form-control" name="phno"id="inputphno">
     </div>
     <div class="d-flex justify-content-center mt-3">
         <button type="submit" name="submit" class="btn btn-primary">Thêm</button>
@@ -42,6 +43,8 @@ include('header.php');
 </div>
 
 <?php
+
+
     if(isset($_POST['submit'])){
         $name = $_POST['name'];
         $age = $_POST['age'];
@@ -57,10 +60,10 @@ include('header.php');
                 reci_bqnty = $bqnty,
                 reci_sex = '$sex',
                 reci_phno = '$phno';";
-        $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        if($res == TRUE){
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        if($result == TRUE){
             $_SESSION['add'] = "<div class='text-success'>Thêm thành công.</div>";
-            header("location:".SITEURL.'index.php');
+            header("location:".SITEURL."index.php");
         }
         else{
             $_SESSION['add'] = "<div class='text-danger'>Lỗi khi thêm</div>";

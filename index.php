@@ -8,6 +8,26 @@ include('header.php');
 </div>
 <div class="container mt-5">
     <a class="btn btn-primary" href="add.php">Thêm </a>
+    <?php
+          if(isset($_SESSION['add']))
+            {
+              echo $_SESSION['add'];
+              unset($_SESSION['add']);
+            }
+            
+            if(isset($_SESSION['update']))
+            {
+              echo $_SESSION['update'];
+              unset($_SESSION['update']);
+            }
+
+            if(isset($_SESSION['delete']))
+            {
+              echo $_SESSION['delete'];
+              unset($_SESSION['delete']);
+            }
+
+?>
     <table class="table">
     <thead>
         <tr>
@@ -25,7 +45,7 @@ include('header.php');
     </thead>
     <tbody>
         <?php
-            include('config/config.php');
+            
             $sql = "select * from blood_recipient";
             $result = mysqli_query($conn, $sql);
             $i = 0;
@@ -48,8 +68,8 @@ include('header.php');
                         <td><?php echo $sex ?></td>
                         <td><?php echo $date ?></td>
                         <td><?php echo $phno ?></td>
-                        <td><a href="delete.php"><i class="fas fa-trash-alt"></i></a></td>
-                        <td><a href="edit.php"><i class="fas fa-user-edit"></i></a></td>
+                        <td><a href="delete.php?reci_id=<?php echo $row['reci_id'];?>"><i class="fas fa-trash-alt"></i></a></td>
+                        <td><a href="edit.php?reci_id=<?php echo $row['reci_id'];?>"><i class="fas fa-user-edit"></i></a></td>
                         
                     </tr>
                     <?php
